@@ -22,7 +22,32 @@
 		]
 
 		this.tax = .0575;
-	}
+	
+		this.newItem = {
+			name: "",
+			price: "",
+			quantity:"",
+			color:"",
+			discount: ""
+		};
+		
+		this.save = function saveItem(form) {
+			if (form.$valid) {
+				this.all.push(this.newItem);
+				this.newItem = {};
+			} else {
+				console.log("hello")
+			}
+		}
 
+		//plus minus button
+		this.plus = function addOne(foo){
+			foo.quantity = foo.quantity + 1;
+		}
+
+		this.minus = function minusOne(foo){
+			foo.quantity = foo.quantity - 1;
+		}
+	}
 	
 })();
