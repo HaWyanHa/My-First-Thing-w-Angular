@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shopular</title>
+	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7' crossorigin='anonymous'>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+	<script src="js/main.js"></script>
+</head>
+<body ng-app="shopular">
+	<table ng-controller="StuffController as stuff" class="table table-bordered">
+		<thead>
+			<tr>
+				<td>Name</td>
+				<td>Price</td>
+				<td>Quantity</td>
+				<td>Color</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="foo in stuff.all">
+				<td>{{foo.name.substring(0,1).toUpperCase() + foo.name.substring(1)}}</td>
+				<td>{{foo.price * stuff.tax + foo.price | currency}} <img ng-show="foo.discount > 0" src="https://tiy-learn-content.s3.amazonaws.com/98350f05-sale_2.png"></td>
+				<td>{{foo.quantity}}</td>
+				<td>{{foo.color.substring(0,1).toUpperCase() + foo.color.substring(1)}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<button>British Mode</button>
+</body>
+</html>
