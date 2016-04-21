@@ -5,14 +5,25 @@
 	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7' crossorigin='anonymous'>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/controllers/stuffController.js"></script>
+	<script src="js/controllers/nameController.js"></script>
+	<script src="js/factories/stuffFactory.js"></script>
 	<style type="text/css">
-		input.ng-invalid.ng-touched {
+		input.ng-invalid.ng-touched, .ng-submitted input.ng-invalid {
         border: 1px solid red;
       }
 	</style>
 </head>
 <body ng-app="shopular">
 	<section class="container" ng-controller="StuffController as stuff" >
+		<header ng-controller= "NameController as admin" class="container">
+			<form>
+				<input type="text" ng-model="">
+				<button></button>
+			</form>
+			<h1>{{admin.name.substring(0,1).toUpperCase() + admin.name.substring(1)}}</h1>
+			<time>{{admin.time | date:"MMM dd - h:mm a"  }}</time>
+		</header>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
