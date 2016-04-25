@@ -1,6 +1,5 @@
-<h2>Fire Type</h2>
-	<ul>
-		<li>Charmander</li>
-		<li>Charmeleon</li>
-		<li>Charizard</li>
-	</ul>
+<ul>
+	<li ng-repeat="items in item.items"><a ui-sref="categories.items.details">{{items.name}}</a></li>
+</ul>
+
+<aside ui-view></aside>

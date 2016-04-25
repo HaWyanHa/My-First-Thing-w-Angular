@@ -1,3 +1,5 @@
 <ul>
-	<li ng-repeat="category in category.categories">{{category.name}}</li>
+	<li ng-repeat="category in category.categories"><a ui-sref="categories.items">{{category.name}}</a></li>
 </ul>
+
+<aside ui-view></aside>

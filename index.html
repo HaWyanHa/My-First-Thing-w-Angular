@@ -1,74 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="DaShop">
 <head>
-	<title>Shopular</title>
-	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7' crossorigin='anonymous'>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
-	<script src="js/main.js"></script>
-	<script src="js/controllers/stuffController.js"></script>
-	<script src="js/controllers/nameController.js"></script>
-	<script src="js/factories/stuffFactory.js"></script>
-	<style type="text/css">
-		input.ng-invalid.ng-touched, .ng-submitted input.ng-invalid {
-        border: 1px solid red;
-      }
-	</style>
+	<title></title>
 </head>
-<body ng-app="shopular">
-	<section class="container" ng-controller="StuffController as stuff" >
-		<header ng-controller= "NameController as admin" class="container">
-			<form>
-				<input type="text" ng-model="">
-				<button></button>
-			</form>
-			<h1>{{admin.name.substring(0,1).toUpperCase() + admin.name.substring(1)}}</h1>
-			<time>{{admin.time | date:"MMM dd - h:mm a"  }}</time>
-		</header>
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<td>Name</td>
-					<td>Price</td>
-					<td>Quantity</td>
-					<td>Color</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="foo in stuff.all | orderBy:'quantity'">
-					<td>{{foo.name.substring(0,1).toUpperCase() + foo.name.substring(1)}}</td>
-					<td>{{(foo.price - foo.discount) * stuff.tax + (foo.price - foo.discount) | currency}} <img ng-show="foo.discount > 0" src="https://tiy-learn-content.s3.amazonaws.com/98350f05-sale_2.png"></td>
-					<td>{{foo.quantity}}
-						<button ng-click="stuff.plus(foo)">
-							<i class="glphicon glyphicon-plus"></i>
-						</button>
-						<button ng-click="stuff.minus(foo)">
-							<i class="glphicon glyphicon-minus"></i>
-						</button>
-					</td>
-					<td>{{foo.color.substring(0,1).toUpperCase() + foo.color.substring(1)}}</td>
-				</tr>
-			</tbody>
-		</table>
-		<form novalidate name="createForm" ng-submit="stuff.save(createForm)">
-			<input type="text" ng-model="stuff.newItem.name" required minlength="2" placeholder="name">
-			<input type="number" placeholder="price" required min="0" ng-model="stuff.newItem.price">
-			<input type="number" placeholder="quantity" required min="0" ng-model="stuff.newItem.quantity">
-			<select required ng-model="stuff.newItem.color">
-				<option value="" disabled selected>Select Color</option>
-				<option>Beige</option>
-				<option>Black</option>
-				<option>Blue</option>
-				<option>Brown</option>
-				<option>Green</option>
-				<option>Red</option>
-				<option>Silver</option>
-				<option>White</option>
-			</select>
-			<input type="number" placeholder="discount" ng-model="stuff.newItem.discount" required min="0">
-			<button class="btn btn-primary">
-				<i class="glphicon glyphicon-plus"></i>
-			</button>
-		</form>
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li><a>Homepage</a></li>
+				<li><a ui-sref="categories">Item Category List</a></li>
+				<li><a>Shopping Cart</a></li>
+			</ul>
+		</nav>
+	</header>
+	<section ui-view>
+		
 	</section>
+	<footer>
+		<p>&copy; Ryan Ha</p>
+	</footer>
+
+	<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js'></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
+	<script src="main.js"></script>
+	<script src="category.controller.js"></script>
+	<script src="item.controller.js"></script>
 </body>
 </html>

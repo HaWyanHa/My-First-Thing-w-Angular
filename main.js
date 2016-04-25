@@ -16,6 +16,18 @@
 		 		controller: "CategoryController",
 		 		controllerAs: "category"
 		 	})
+		 	 .state('categories.items', {
+                url: '/name',
+                templateUrl: 'category.items.html',
+                controller: 'ItemController',
+                controllerAs: 'item'
+            })
+		 	.state("categories.items.details", {
+		 		url:'/detail',
+		 		templateUrl: "items.html"
+		 		
+
+		 	});
 	}
 
 	
